@@ -1,0 +1,194 @@
+main.py - 2021-04-25 21:43:17,490 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:46:53,684 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:48:27,152 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+user_page_count_consumer.py - 2021-04-25 21:49:43,464 - root - ERROR - <class 'py4j.protocol.Py4JJavaError'>
+user_page_count_consumer.py - 2021-04-25 21:49:43,464 - root - ERROR - ERROR in DATA STREAM
+user_page_count_consumer.py - 2021-04-25 21:49:43,464 - root - ERROR - An error occurred while calling o87.await.
+: java.util.concurrent.ExecutionException: org.apache.flink.table.api.TableException: Failed to wait job finish
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1999)
+	at org.apache.flink.table.api.internal.TableResultImpl.awaitInternal(TableResultImpl.java:123)
+	at org.apache.flink.table.api.internal.TableResultImpl.await(TableResultImpl.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.flink.api.python.shaded.py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at org.apache.flink.api.python.shaded.py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at org.apache.flink.api.python.shaded.py4j.Gateway.invoke(Gateway.java:282)
+	at org.apache.flink.api.python.shaded.py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at org.apache.flink.api.python.shaded.py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at org.apache.flink.api.python.shaded.py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.flink.table.api.TableException: Failed to wait job finish
+	at org.apache.flink.table.api.internal.InsertResultIterator.hasNext(InsertResultIterator.java:56)
+	at org.apache.flink.table.api.internal.TableResultImpl$CloseableRowIteratorWrapper.hasNext(TableResultImpl.java:350)
+	at org.apache.flink.table.api.internal.TableResultImpl$CloseableRowIteratorWrapper.isFirstRowReady(TableResultImpl.java:363)
+	at org.apache.flink.table.api.internal.TableResultImpl.lambda$awaitInternal$1(TableResultImpl.java:110)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1736)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	... 1 more
+Caused by: java.util.concurrent.ExecutionException: org.apache.flink.runtime.client.JobExecutionException: Job execution failed.
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1999)
+	at org.apache.flink.table.api.internal.InsertResultIterator.hasNext(InsertResultIterator.java:54)
+	... 7 more
+Caused by: org.apache.flink.runtime.client.JobExecutionException: Job execution failed.
+	at org.apache.flink.runtime.jobmaster.JobResult.toJobExecutionResult(JobResult.java:144)
+	at org.apache.flink.runtime.minicluster.MiniClusterJobClient.lambda$getJobExecutionResult$2(MiniClusterJobClient.java:117)
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:642)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.complete(CompletableFuture.java:2073)
+	at org.apache.flink.runtime.rpc.akka.AkkaInvocationHandler.lambda$invokeRpc$0(AkkaInvocationHandler.java:237)
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:859)
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:837)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.complete(CompletableFuture.java:2073)
+	at org.apache.flink.runtime.concurrent.FutureUtils$1.onComplete(FutureUtils.java:1046)
+	at akka.dispatch.OnComplete.internal(Future.scala:264)
+	at akka.dispatch.OnComplete.internal(Future.scala:261)
+	at akka.dispatch.japi$CallbackBridge.apply(Future.scala:191)
+	at akka.dispatch.japi$CallbackBridge.apply(Future.scala:188)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:36)
+	at org.apache.flink.runtime.concurrent.Executors$DirectExecutionContext.execute(Executors.java:73)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:44)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:252)
+	at akka.pattern.PromiseActorRef.$bang(AskSupport.scala:572)
+	at akka.pattern.PipeToSupport$PipeableFuture$$anonfun$pipeTo$1.applyOrElse(PipeToSupport.scala:22)
+	at akka.pattern.PipeToSupport$PipeableFuture$$anonfun$pipeTo$1.applyOrElse(PipeToSupport.scala:21)
+	at scala.concurrent.Future$$anonfun$andThen$1.apply(Future.scala:436)
+	at scala.concurrent.Future$$anonfun$andThen$1.apply(Future.scala:435)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:36)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:91)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91)
+	at akka.dispatch.BatchingExecutor$BlockableBatch$$anonfun$run$1.apply(BatchingExecutor.scala:91)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:90)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:44)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: org.apache.flink.runtime.JobException: Recovery is suppressed by NoRestartBackoffTimeStrategy
+	at org.apache.flink.runtime.executiongraph.failover.flip1.ExecutionFailureHandler.handleFailure(ExecutionFailureHandler.java:118)
+	at org.apache.flink.runtime.executiongraph.failover.flip1.ExecutionFailureHandler.getFailureHandlingResult(ExecutionFailureHandler.java:80)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.handleTaskFailure(DefaultScheduler.java:233)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.maybeHandleTaskFailure(DefaultScheduler.java:224)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.updateTaskExecutionStateInternal(DefaultScheduler.java:215)
+	at org.apache.flink.runtime.scheduler.SchedulerBase.updateTaskExecutionState(SchedulerBase.java:669)
+	at org.apache.flink.runtime.scheduler.SchedulerNG.updateTaskExecutionState(SchedulerNG.java:89)
+	at org.apache.flink.runtime.jobmaster.JobMaster.updateTaskExecutionState(JobMaster.java:447)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleRpcInvocation(AkkaRpcActor.java:305)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleRpcMessage(AkkaRpcActor.java:212)
+	at org.apache.flink.runtime.rpc.akka.FencedAkkaRpcActor.handleRpcMessage(FencedAkkaRpcActor.java:77)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleMessage(AkkaRpcActor.java:158)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:26)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:21)
+	at scala.PartialFunction$class.applyOrElse(PartialFunction.scala:123)
+	at akka.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:21)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:170)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:171)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:171)
+	at akka.actor.Actor$class.aroundReceive(Actor.scala:517)
+	at akka.actor.AbstractActor.aroundReceive(AbstractActor.scala:225)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:592)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:561)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:258)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:225)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:235)
+	... 4 more
+Caused by: org.apache.flink.kafka.shaded.org.apache.kafka.common.KafkaException: Failed to construct kafka consumer
+	at org.apache.flink.kafka.shaded.org.apache.kafka.clients.consumer.KafkaConsumer.<init>(KafkaConsumer.java:820)
+	at org.apache.flink.kafka.shaded.org.apache.kafka.clients.consumer.KafkaConsumer.<init>(KafkaConsumer.java:666)
+	at org.apache.flink.kafka.shaded.org.apache.kafka.clients.consumer.KafkaConsumer.<init>(KafkaConsumer.java:646)
+	at org.apache.flink.streaming.connectors.kafka.internals.KafkaPartitionDiscoverer.initializeConnections(KafkaPartitionDiscoverer.java:55)
+	at org.apache.flink.streaming.connectors.kafka.internals.AbstractPartitionDiscoverer.open(AbstractPartitionDiscoverer.java:94)
+	at org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase.open(FlinkKafkaConsumerBase.java:551)
+	at org.apache.flink.api.common.functions.util.FunctionUtils.openFunction(FunctionUtils.java:34)
+	at org.apache.flink.streaming.api.operators.AbstractUdfStreamOperator.open(AbstractUdfStreamOperator.java:102)
+	at org.apache.flink.streaming.runtime.tasks.OperatorChain.initializeStateAndOpenOperators(OperatorChain.java:428)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.lambda$beforeInvoke$2(StreamTask.java:543)
+	at org.apache.flink.streaming.runtime.tasks.StreamTaskActionExecutor$SynchronizedStreamTaskActionExecutor.runThrowing(StreamTaskActionExecutor.java:93)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.beforeInvoke(StreamTask.java:533)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.invoke(StreamTask.java:573)
+	at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:755)
+	at org.apache.flink.runtime.taskmanager.Task.run(Task.java:570)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.flink.kafka.shaded.org.apache.kafka.common.config.ConfigException: Invalid port in bootstrap.servers: localhost:90932
+	at org.apache.flink.kafka.shaded.org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:81)
+	at org.apache.flink.kafka.shaded.org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:47)
+	at org.apache.flink.kafka.shaded.org.apache.kafka.clients.consumer.KafkaConsumer.<init>(KafkaConsumer.java:735)
+	... 15 more
+
+main.py - 2021-04-25 21:51:20,294 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:51:27,723 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:51:31,966 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:52:01,893 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:55:19,260 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:55:26,977 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:55:39,175 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:56:28,915 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:56:50,325 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:56:57,661 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:56:57,772 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': '611dc95d-2005-4608-a4a1-3654138518a4', 'visit_timestamp': '2021-04-22 21:56:57'}
+main.py - 2021-04-25 21:56:57,773 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': 'b64b978c-20f7-46b4-982c-7220572fd213', 'visit_timestamp': '2021-04-21 21:56:57'}
+main.py - 2021-04-25 21:56:57,773 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': 'acac786f-00e8-4e3b-aa5e-17950865106c', 'visit_timestamp': '2021-04-15 21:56:57'}
+main.py - 2021-04-25 21:56:57,773 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': '069e6f70-0659-40da-8083-5004a689d8d2', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,774 - root - DEBUG - {'user_id': '21c22d1e-4766-4cf6-92f3-94157ce534a5', 'page_id': 'de939cb6-6757-44aa-8d22-c558d1ec053b', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,774 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': 'e9274ee3-e280-4a20-a56e-4b8f017cdb16', 'visit_timestamp': '2021-04-17 21:56:57'}
+main.py - 2021-04-25 21:56:57,774 - root - DEBUG - {'user_id': '0e6578e9-e535-4520-ac1c-ed8ee6586615', 'page_id': 'd61d36e6-0089-4fa7-81fb-9dc4aa685e49', 'visit_timestamp': '2021-04-22 21:56:57'}
+main.py - 2021-04-25 21:56:57,774 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': 'd1c33fde-50b6-4762-9787-83429ec39f9e', 'visit_timestamp': '2021-04-21 21:56:57'}
+main.py - 2021-04-25 21:56:57,775 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': '0aa0506f-690f-4011-8715-3ef8a12de6e0', 'visit_timestamp': '2021-04-23 21:56:57'}
+main.py - 2021-04-25 21:56:57,775 - root - DEBUG - {'user_id': 'aa297376-ff50-419f-9af2-95b09ca09498', 'page_id': '271c7f68-553c-437b-81d2-04cb84b9cc8c', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,775 - root - DEBUG - {'user_id': '21c22d1e-4766-4cf6-92f3-94157ce534a5', 'page_id': '1c307d04-cc4d-4b18-bebc-814256194563', 'visit_timestamp': '2021-04-23 21:56:57'}
+main.py - 2021-04-25 21:56:57,775 - root - DEBUG - {'user_id': '3b9be5e7-a6b6-42dc-83d1-c5cdc98c9cce', 'page_id': '56032cea-be69-42fc-bf3f-f961531728df', 'visit_timestamp': '2021-04-18 21:56:57'}
+main.py - 2021-04-25 21:56:57,775 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': '6dea140c-b69d-415c-8510-a0d4838aa8d1', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,777 - root - DEBUG - {'user_id': 'ef999f34-4bd6-47fe-aef1-4ec8b02e8ed4', 'page_id': '718a5be3-c6f6-4812-ae74-0292dee8cacc', 'visit_timestamp': '2021-04-20 21:56:57'}
+main.py - 2021-04-25 21:56:57,779 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': 'd30ca5ca-6d2b-44d3-9870-32e87b67a5f9', 'visit_timestamp': '2021-04-17 21:56:57'}
+main.py - 2021-04-25 21:56:57,779 - root - DEBUG - {'user_id': '0e6578e9-e535-4520-ac1c-ed8ee6586615', 'page_id': '0d738b98-d66f-43a7-a54e-b9b3cf76b87a', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,779 - root - DEBUG - {'user_id': 'dd64dcbb-f28f-4756-ad0e-6c4833b37810', 'page_id': 'cb02264c-f0fa-4446-82f5-d870a1340bd6', 'visit_timestamp': '2021-04-17 21:56:57'}
+main.py - 2021-04-25 21:56:57,780 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': 'ca77894a-c013-44d4-a189-22bafc96eb3a', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,780 - root - DEBUG - {'user_id': 'ef999f34-4bd6-47fe-aef1-4ec8b02e8ed4', 'page_id': 'bd41a07a-eb7d-4615-be5a-59c2e96c22d3', 'visit_timestamp': '2021-04-23 21:56:57'}
+main.py - 2021-04-25 21:56:57,780 - root - DEBUG - {'user_id': '73944a94-16f5-4577-b3b2-d5d5399b2611', 'page_id': 'ca77894a-c013-44d4-a189-22bafc96eb3a', 'visit_timestamp': '2021-04-24 21:56:57'}
+main.py - 2021-04-25 21:56:57,781 - root - DEBUG - {'user_id': '3b9be5e7-a6b6-42dc-83d1-c5cdc98c9cce', 'page_id': 'c2fdeb91-a9a7-4688-b052-d30d77ba9d05', 'visit_timestamp': '2021-04-21 21:56:57'}
+main.py - 2021-04-25 21:56:57,781 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': '72cc7945-37ff-4b1e-9a2b-5557fa9534b8', 'visit_timestamp': '2021-04-24 21:56:57'}
+main.py - 2021-04-25 21:56:57,781 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': '07301bf8-3a8e-4094-9704-ba1fdbb4e21b', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,782 - root - DEBUG - {'user_id': 'dd64dcbb-f28f-4756-ad0e-6c4833b37810', 'page_id': 'c21574c3-63f6-47d6-a5bd-462a0ffdca88', 'visit_timestamp': '2021-04-17 21:56:57'}
+main.py - 2021-04-25 21:56:57,782 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': '028fb5eb-8623-47a3-aaa2-2baabaeba30e', 'visit_timestamp': '2021-04-20 21:56:57'}
+main.py - 2021-04-25 21:56:57,782 - root - DEBUG - {'user_id': 'dd64dcbb-f28f-4756-ad0e-6c4833b37810', 'page_id': '03fc8c15-0a67-4c23-8adc-fbf6cb2866dc', 'visit_timestamp': '2021-04-22 21:56:57'}
+main.py - 2021-04-25 21:56:57,782 - root - DEBUG - {'user_id': '3b9be5e7-a6b6-42dc-83d1-c5cdc98c9cce', 'page_id': '73391646-9e6c-430a-9033-7e9e9e8eb1f2', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,783 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': 'b39fa461-5825-44bc-8aaf-c54aa3751781', 'visit_timestamp': '2021-04-15 21:56:57'}
+main.py - 2021-04-25 21:56:57,783 - root - DEBUG - {'user_id': '21c22d1e-4766-4cf6-92f3-94157ce534a5', 'page_id': '4e15cb71-0b5b-4788-b2b9-ba0a3590daa9', 'visit_timestamp': '2021-04-21 21:56:57'}
+main.py - 2021-04-25 21:56:57,784 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': 'b51f1105-4c17-465b-ab7d-e89cab75985f', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,784 - root - DEBUG - {'user_id': '3b9be5e7-a6b6-42dc-83d1-c5cdc98c9cce', 'page_id': '069e6f70-0659-40da-8083-5004a689d8d2', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,784 - root - DEBUG - {'user_id': 'aa297376-ff50-419f-9af2-95b09ca09498', 'page_id': 'f06d6c97-ae27-4ceb-a800-c488a3380ef3', 'visit_timestamp': '2021-04-21 21:56:57'}
+main.py - 2021-04-25 21:56:57,784 - root - DEBUG - {'user_id': 'aa297376-ff50-419f-9af2-95b09ca09498', 'page_id': '0d738b98-d66f-43a7-a54e-b9b3cf76b87a', 'visit_timestamp': '2021-04-21 21:56:57'}
+main.py - 2021-04-25 21:56:57,785 - root - DEBUG - {'user_id': '21c22d1e-4766-4cf6-92f3-94157ce534a5', 'page_id': 'bccd3a9b-1f0c-41b8-9bcd-d3557fabcc93', 'visit_timestamp': '2021-04-22 21:56:57'}
+main.py - 2021-04-25 21:56:57,786 - root - DEBUG - {'user_id': '0eca69fc-cfd1-4604-ad0b-896d49f8d8fc', 'page_id': 'c2fdeb91-a9a7-4688-b052-d30d77ba9d05', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,786 - root - DEBUG - {'user_id': '73944a94-16f5-4577-b3b2-d5d5399b2611', 'page_id': '03fc8c15-0a67-4c23-8adc-fbf6cb2866dc', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,787 - root - DEBUG - {'user_id': '73944a94-16f5-4577-b3b2-d5d5399b2611', 'page_id': 'bccd3a9b-1f0c-41b8-9bcd-d3557fabcc93', 'visit_timestamp': '2021-04-22 21:56:57'}
+main.py - 2021-04-25 21:56:57,788 - root - DEBUG - {'user_id': '3b9be5e7-a6b6-42dc-83d1-c5cdc98c9cce', 'page_id': '8d74d825-e045-462b-9ddd-c328a7b89ef4', 'visit_timestamp': '2021-04-23 21:56:57'}
+main.py - 2021-04-25 21:56:57,789 - root - DEBUG - {'user_id': '21c22d1e-4766-4cf6-92f3-94157ce534a5', 'page_id': '4dc0754d-7781-4cff-a413-78d7afecc725', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,790 - root - DEBUG - {'user_id': '21c22d1e-4766-4cf6-92f3-94157ce534a5', 'page_id': '069e6f70-0659-40da-8083-5004a689d8d2', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,791 - root - DEBUG - {'user_id': 'dd64dcbb-f28f-4756-ad0e-6c4833b37810', 'page_id': '1a8a03c3-43f8-4ac7-8f3c-302596f61113', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,791 - root - DEBUG - {'user_id': 'ef999f34-4bd6-47fe-aef1-4ec8b02e8ed4', 'page_id': 'd5357d1c-632b-4323-b1e6-60a8c018ea81', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,792 - root - DEBUG - {'user_id': 'dd64dcbb-f28f-4756-ad0e-6c4833b37810', 'page_id': 'cb02264c-f0fa-4446-82f5-d870a1340bd6', 'visit_timestamp': '2021-04-16 21:56:57'}
+main.py - 2021-04-25 21:56:57,793 - root - DEBUG - {'user_id': 'dd64dcbb-f28f-4756-ad0e-6c4833b37810', 'page_id': 'b39fa461-5825-44bc-8aaf-c54aa3751781', 'visit_timestamp': '2021-04-22 21:56:57'}
+main.py - 2021-04-25 21:56:57,794 - root - DEBUG - {'user_id': '0e6578e9-e535-4520-ac1c-ed8ee6586615', 'page_id': '2eefc696-b7d3-4655-81c1-e795f5311886', 'visit_timestamp': '2021-04-19 21:56:57'}
+main.py - 2021-04-25 21:56:57,794 - root - DEBUG - {'user_id': 'aa297376-ff50-419f-9af2-95b09ca09498', 'page_id': '0960529d-5ff7-4176-b2d0-fc91457231e2', 'visit_timestamp': '2021-04-22 21:56:57'}
+main.py - 2021-04-25 21:56:57,795 - root - DEBUG - {'user_id': 'd566cadf-0748-49d9-a812-c78ea123f01d', 'page_id': 'bccd3a9b-1f0c-41b8-9bcd-d3557fabcc93', 'visit_timestamp': '2021-04-18 21:56:57'}
+main.py - 2021-04-25 21:56:57,796 - root - DEBUG - {'user_id': 'aa297376-ff50-419f-9af2-95b09ca09498', 'page_id': '4dc0754d-7781-4cff-a413-78d7afecc725', 'visit_timestamp': '2021-04-24 21:56:57'}
+main.py - 2021-04-25 21:56:57,797 - root - DEBUG - {'user_id': 'aa297376-ff50-419f-9af2-95b09ca09498', 'page_id': 'cda32e05-2a4f-438a-bfca-c2850c2da466', 'visit_timestamp': '2021-04-17 21:56:57'}
+main.py - 2021-04-25 21:57:31,116 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:58:27,067 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:58:42,254 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 21:59:04,553 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 22:00:37,842 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
+main.py - 2021-04-25 22:02:30,821 - root - INFO - Connecting to  Kafka[localhost] on port: 9092
